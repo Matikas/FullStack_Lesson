@@ -40,7 +40,7 @@ namespace FullStack.Controllers
 
             if (loginSuccess)
             {
-                return Ok(_jwtService.GetJwtToken(account));
+                return Ok(new { Token = _jwtService.GetJwtToken(account) });
             }
             else
             {
