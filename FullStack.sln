@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32104.313
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullStack", "FullStack\FullStack.csproj", "{ADEF0024-E7AC-42B8-A919-60E3B993143D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullStack", "FullStack\FullStack.csproj", "{ADEF0024-E7AC-42B8-A919-60E3B993143D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullStack.BL", "FullStack.BL\FullStack.BL.csproj", "{BEC61C83-1C5D-4429-9219-7B7CD4C62948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullStack.BL", "FullStack.BL\FullStack.BL.csproj", "{BEC61C83-1C5D-4429-9219-7B7CD4C62948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullStack.Domain", "FullStack.Domain\FullStack.Domain.csproj", "{AC285667-ADA6-45DE-9793-C149F1A6F8C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullStack.Domain", "FullStack.Domain\FullStack.Domain.csproj", "{AC285667-ADA6-45DE-9793-C149F1A6F8C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullStack.DAL", "FullStack.DAL\FullStack.DAL.csproj", "{0A372BA7-4057-41F4-BFEF-A12EFBB93987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullStack.DAL", "FullStack.DAL\FullStack.DAL.csproj", "{0A372BA7-4057-41F4-BFEF-A12EFBB93987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
