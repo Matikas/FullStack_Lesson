@@ -11,10 +11,12 @@ namespace FullStack.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserAccountsService _userAccountsService;
+        private readonly IJwtService _jwtService;
 
-        public AuthController(IUserAccountsService userAccountsService)
+        public AuthController(IUserAccountsService userAccountsService, IJwtService jwtService)
         {
             _userAccountsService = userAccountsService;
+            _jwtService = jwtService;
         }
 
         [HttpPost("Signup")]
@@ -29,6 +31,21 @@ namespace FullStack.Controllers
             var success = await _userAccountsService.CreateUserAccountAsync(signupDto.UserName, signupDto.Password, domainContactDetails);
 
             return success ? Ok() : BadRequest(new { ErrorMessage = "User already exist" });
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            var (loginSuccess, account) = await _userAccountsService.LoginAsync(loginDto.UserName, loginDto.Password);
+
+            if (loginSuccess)
+            {
+                return Ok(_jwtService.GetJwtToken(account));
+            }
+            else
+            {
+                return BadRequest(new { ErrorMessage = "Login failed" });
+            }
         }
     }
 }

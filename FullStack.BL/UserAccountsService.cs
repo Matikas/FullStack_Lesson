@@ -43,6 +43,24 @@ namespace FullStack.BL
             return true;
         }
 
+        public async Task<(bool authenticationSuccessful, UserAccount? userAccount)> LoginAsync(string username, string password)
+        {
+            var account = await _dbRepository.GetAccountByUserNameAsync(username);
+            if (account == null)
+            {
+                return (false, null);
+            }
+
+            if (VerifyPasswordHash(password, account.PasswordHash, account.PasswordSalt))
+            {
+                return (true, account);
+            }
+            else
+            {
+                return (false, null);
+            }
+        }
+
         private (byte[] hash, byte[] salt) CreatePasswordHash(string password)
         {
             using var hmac = new HMACSHA512();
@@ -50,6 +68,14 @@ namespace FullStack.BL
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
 
             return (hash, salt);
+        }
+
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using var hmac = new HMACSHA512(passwordSalt);
+            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+            return computedHash.SequenceEqual(passwordHash);
         }
     }
 }
